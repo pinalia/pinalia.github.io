@@ -3,57 +3,473 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pinalia OÜ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>Pinalia OÜ — Software, Consulting, Advisory & Mobile Games</title>
+  <meta name="description" content="Pinalia is an Estonia-based technology company delivering custom software development, fractional CTO advisory, agentic AI engineering, IT consulting, and mobile game publishing." />
+  <meta property="og:title" content="Pinalia OÜ — Technology Company" />
+  <meta property="og:description" content="Custom software, fractional CTO advisory, agentic AI transformations, IT consulting, and mobile games from Tallinn, Estonia." />
+  <meta property="og:image" content="https://pinalia.com/logo.png" />
+  <meta property="og:url" content="https://pinalia.com" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            navy: { 800: '#0d1b2a', 900: '#0a1628' },
+            brand: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2' },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger > *:nth-child(1) { transition-delay: 0s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.24s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.36s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.48s; }
+
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(10,22,40,0.93) 0%, rgba(10,22,40,0.75) 50%, rgba(6,182,212,0.12) 100%);
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(6,182,212,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(6,182,212,0.08);
+    }
+
+    .featured-card {
+      background: linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(6,182,212,0.2);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .featured-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(6,182,212,0.45);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 40px rgba(6,182,212,0.12);
+    }
+
+    .nav-scrolled {
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+      background: rgba(10,22,40,0.95) !important;
+      backdrop-filter: blur(12px);
+    }
+
+    .accent-line {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #22d3ee);
+      border-radius: 2px;
+    }
+
+    .stat-card { position: relative; }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #06b6d4, #22d3ee);
+      transition: width 0.4s ease;
+    }
+    .stat-card:hover::after { width: 60%; }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .mobile-menu.open { max-height: 300px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: rgba(6,182,212,0.15);
+      color: #22d3ee;
+      border: 1px solid rgba(6,182,212,0.25);
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white font-inter">
-  <header class="bg-gray-800 p-6 shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-      <img src="https://pinalia.github.io/logo.png" alt="Pinalia Logo" class="h-12">
-      <nav class="space-x-6">
-        <a href="#about" class="text-blue-400 hover:underline">About</a>
-        <a href="#software" class="text-blue-400 hover:underline">Software</a>
-        <a href="#consulting" class="text-blue-400 hover:underline">Consulting</a>
-        <a href="#games" class="text-blue-400 hover:underline">Mobile Games</a>
-      </nav>
-    </div>
-  </header>
+<body class="bg-navy-900 text-white font-sans antialiased">
 
-  <section id="about" class="py-16 px-4 text-center">
-    <div class="max-w-3xl mx-auto">
-      <img src="https://pinalia.github.io/startup.jpeg" alt="About Image" class="rounded-lg mb-6 w-full h-64 object-cover">
-      <h1 class="text-4xl font-bold text-blue-400 mb-4">About Us</h1>
-      <p class="text-lg text-gray-300">Pinalia OÜ is a technology startup based in Estonia. We specialize in software development, consultancy services, and mobile game projects. Our mission is to shape the digital world with innovative solutions.</p>
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-5 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <a href="#" class="flex-shrink-0">
+        <img src="logo.png" alt="Pinalia" class="h-9" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">Services</a>
+        <a href="#about" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">About</a>
+        <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">Contact</a>
+        <a href="mailto:info@pinalia.com" class="text-sm font-semibold text-navy-900 bg-brand-500 hover:bg-brand-400 px-5 py-2.5 rounded-lg transition-colors">Get in Touch</a>
+      </div>
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+        <span class="block w-6 h-0.5 bg-gray-300 transition-all" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-gray-300 transition-all" id="bar2"></span>
+        <span class="block w-6 h-0.5 bg-gray-300 transition-all" id="bar3"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <div class="max-w-6xl mx-auto px-6 pt-4 pb-6 flex flex-col gap-4">
+        <a href="#services" class="text-gray-300 hover:text-brand-400 transition-colors py-1" onclick="closeMobile()">Services</a>
+        <a href="#about" class="text-gray-300 hover:text-brand-400 transition-colors py-1" onclick="closeMobile()">About</a>
+        <a href="#contact" class="text-gray-300 hover:text-brand-400 transition-colors py-1" onclick="closeMobile()">Contact</a>
+        <a href="mailto:info@pinalia.com" class="text-center text-sm font-semibold text-navy-900 bg-brand-500 hover:bg-brand-400 px-5 py-2.5 rounded-lg transition-colors mt-2">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative min-h-screen flex items-center">
+    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-32">
+      <div class="max-w-2xl">
+        <p class="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-4 fade-up">Software &middot; Advisory &middot; AI Engineering &middot; Games</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 fade-up">
+          Technology leadership<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-300">that delivers results.</span>
+        </h1>
+        <p class="text-lg text-gray-300 leading-relaxed mb-10 max-w-lg fade-up">
+          From fractional CTO advisory and agentic AI transformations to custom software and mobile games &mdash; we partner with companies to build, scale, and innovate.
+        </p>
+        <div class="flex flex-wrap gap-4 fade-up">
+          <a href="#services" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-navy-900 font-semibold px-7 py-3.5 rounded-lg transition-colors text-sm">
+            Explore Our Services
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="mailto:info@pinalia.com" class="inline-flex items-center gap-2 border border-gray-600 hover:border-brand-500 text-gray-300 hover:text-brand-400 font-medium px-7 py-3.5 rounded-lg transition-colors text-sm">
+            Contact Us
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="software" class="py-16 px-4 bg-gray-800">
-    <div class="max-w-3xl mx-auto text-center">
-      <img src="https://pinalia.github.io/software.jpeg" alt="Software Image" class="rounded-lg mb-6 w-full h-64 object-cover">
-      <h2 class="text-3xl font-bold text-blue-400 mb-4">Software Development</h2>
-      <p class="text-lg text-gray-300">We develop scalable and secure software solutions using modern web and mobile technologies. From startups to enterprises, we provide technology support tailored to various client needs.</p>
+  <!-- ===== FEATURED SERVICES (Advisory + AI) ===== -->
+  <section id="services" class="py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3">What We Do</p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Services</h2>
+        <div class="accent-line mx-auto"></div>
+      </div>
+
+      <!-- Featured: CTO Advisory + Agentic Engineering -->
+      <div class="grid md:grid-cols-2 gap-8 mb-8 stagger">
+
+        <!-- Fractional CTO / Tech Lead Advisory -->
+        <div class="featured-card rounded-2xl overflow-hidden fade-up">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Strategic advisory meeting" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="badge">Featured</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Fractional CTO & Tech Lead Advisory</h3>
+            <p class="text-gray-400 leading-relaxed text-sm mb-5">Hands-on technology leadership for startups and scale-ups that need senior engineering guidance without the full-time commitment. We embed as your CTO or Tech Lead to set direction, raise the bar, and accelerate delivery.</p>
+            <ul class="space-y-2.5">
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Technical Strategy & Architecture Review</li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Engineering Team Building & Mentorship</li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Investor-Ready Tech Due Diligence</li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Process & DevOps Maturity Assessment</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Agentic Engineering Transformations -->
+        <div class="featured-card rounded-2xl overflow-hidden fade-up">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI and agentic engineering" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="badge">Featured</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Agentic Engineering Transformations</h3>
+            <p class="text-gray-400 leading-relaxed text-sm mb-5">Transform how your engineering teams build software with AI-native workflows. We design and implement agentic systems that multiply developer productivity and fundamentally change what's possible with a small team.</p>
+            <ul class="space-y-2.5">
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>AI-Augmented Development Workflows</li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Custom Agent Systems & Tooling</li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>LLM Integration & Prompt Engineering</li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Team Training & Adoption Strategy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Services: Software, Consulting, Games -->
+      <div class="grid md:grid-cols-3 gap-8 stagger">
+
+        <!-- Software Development -->
+        <div class="glass-card rounded-2xl overflow-hidden fade-up">
+          <div class="relative h-48 overflow-hidden">
+            <img src="software.jpeg" alt="Software Development" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent"></div>
+          </div>
+          <div class="p-7">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Software Development</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Scalable, secure applications built with modern web and mobile technologies. From MVPs to enterprise platforms, we architect solutions that grow with your business.</p>
+            <ul class="mt-5 space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Web & Mobile Applications</li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Cloud Architecture & DevOps</li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>API Design & Integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- IT Consulting -->
+        <div class="glass-card rounded-2xl overflow-hidden fade-up">
+          <div class="relative h-48 overflow-hidden">
+            <img src="consult.jpeg" alt="IT Consulting" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent"></div>
+          </div>
+          <div class="p-7">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">IT Consulting</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Strategic guidance for organisations navigating digital transformation. We translate complex technology decisions into clear, actionable roadmaps.</p>
+            <ul class="mt-5 space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Digital Transformation</li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Technology Strategy</li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Project & Agile Management</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Games -->
+        <div class="glass-card rounded-2xl overflow-hidden fade-up">
+          <div class="relative h-48 overflow-hidden">
+            <img src="game.jpeg" alt="Mobile Game Development" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent"></div>
+          </div>
+          <div class="p-7">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.421 48.421 0 01-4.185-.428c-.547-.068-.985-.482-.985-1.034V4.5c0-.552.438-1 .985-1.034a48.634 48.634 0 014.185-.428.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959A1.647 1.647 0 019.5 0C8.257 0 7.25.84 7.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0M14.25 6.087c0 .355-.186.676-.401.959a1.647 1.647 0 00-.349 1.003c0 1.035 1.007 1.875 2.25 1.875s2.25-.84 2.25-1.875c0-.369-.128-.713-.349-1.003-.215-.283-.401-.604-.401-.959"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-4.5a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v4.5a2.25 2.25 0 002.25 2.25z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Mobile Games</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Creative, engaging mobile games built for global audiences. We handle every stage &mdash; from concept and design to development, launch, and live operations.</p>
+            <ul class="mt-5 space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Game Design & Prototyping</li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Cross-Platform Development</li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>Live Ops & Analytics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="consulting" class="py-16 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <img src="https://pinalia.github.io/consult.jpeg" alt="Consulting Image" class="rounded-lg mb-6 w-full h-64 object-cover">
-      <h2 class="text-3xl font-bold text-blue-400 mb-4">Consulting</h2>
-      <p class="text-lg text-gray-300">We offer expert consulting services in digital transformation, project management, technology strategies, and agile methodologies.</p>
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-24 lg:py-32 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent"></div>
+    <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-brand-500/[0.03] blur-3xl"></div>
+
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-up">
+          <p class="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3">Who We Are</p>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">Technology company<br />rooted in Estonia.</h2>
+          <div class="accent-line mb-8"></div>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            Pinalia OÜ is headquartered in Tallinn, Estonia &mdash; one of Europe's most dynamic digital ecosystems. We combine deep technical expertise with a pragmatic, delivery-focused approach.
+          </p>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            Our team has led engineering organisations, shipped products at scale, and guided startups through critical growth phases. Whether you need a fractional CTO to steer your tech strategy, an AI transformation partner, a development team, or a game studio &mdash; we deliver.
+          </p>
+          <a href="mailto:info@pinalia.com" class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-400/80 font-medium text-sm transition-colors group">
+            Start a conversation
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 fade-up">
+          <div class="stat-card glass-card rounded-2xl p-7 text-center">
+            <p class="text-3xl font-bold text-brand-400 mb-1">EU</p>
+            <p class="text-sm text-gray-400">Headquartered in<br/>Tallinn, Estonia</p>
+          </div>
+          <div class="stat-card glass-card rounded-2xl p-7 text-center">
+            <p class="text-3xl font-bold text-brand-400 mb-1">5</p>
+            <p class="text-sm text-gray-400">Core Service<br/>Verticals</p>
+          </div>
+          <div class="stat-card glass-card rounded-2xl p-7 text-center">
+            <p class="text-3xl font-bold text-brand-400 mb-1">E2E</p>
+            <p class="text-sm text-gray-400">Strategy to<br/>Delivery</p>
+          </div>
+          <div class="stat-card glass-card rounded-2xl p-7 text-center">
+            <p class="text-3xl font-bold text-brand-400 mb-1">AI</p>
+            <p class="text-sm text-gray-400">Native Agentic<br/>Workflows</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="games" class="py-16 px-4 bg-gray-800">
-    <div class="max-w-3xl mx-auto text-center">
-      <img src="https://pinalia.github.io/game.jpeg" alt="Game Dev Image" class="rounded-lg mb-6 w-full h-64 object-cover">
-      <h2 class="text-3xl font-bold text-blue-400 mb-4">Mobile Game Development</h2>
-      <p class="text-lg text-gray-300">We design creative and engaging mobile games for the global market. From concept to release, we manage the entire development process.</p>
+  <!-- ===== CTA ===== -->
+  <section id="contact" class="py-24 lg:py-32 relative">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="glass-card rounded-3xl p-12 sm:p-16 text-center relative overflow-hidden fade-up">
+        <div class="absolute -left-32 -top-32 w-64 h-64 rounded-full bg-brand-500/[0.06] blur-3xl"></div>
+        <div class="absolute -right-32 -bottom-32 w-64 h-64 rounded-full bg-brand-500/[0.06] blur-3xl"></div>
+        <div class="relative z-10">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Let's build something together.</h2>
+          <p class="text-gray-400 max-w-lg mx-auto mb-10 leading-relaxed">
+            Whether you need a technology leader, an AI transformation partner, a development team, or a fresh game concept &mdash; we'd love to hear from you.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="mailto:info@pinalia.com" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-navy-900 font-semibold px-8 py-4 rounded-lg transition-colors text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+              info@pinalia.com
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="bg-gray-800 py-6 text-center text-sm text-gray-400">
-    <p>Pinalia OÜ &copy; 2025 - <a href="mailto:info@pinalia.com" class="text-blue-400">info@pinalia.com</a> | Sepapaja 6, Tallinn, 15551 Estonia</p>
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-white/5 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <img src="logo.png" alt="Pinalia" class="h-8 mb-4" />
+          <p class="text-sm text-gray-500 leading-relaxed">Technology company delivering software, advisory, AI engineering, and mobile games from Estonia.</p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-gray-300 mb-4">Services</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#services" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">Fractional CTO Advisory</a></li>
+            <li><a href="#services" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">Agentic Engineering</a></li>
+            <li><a href="#services" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">Software Development</a></li>
+            <li><a href="#services" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">IT Consulting</a></li>
+            <li><a href="#services" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">Mobile Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-gray-300 mb-4">Company</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#about" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">About Us</a></li>
+            <li><a href="#contact" class="text-sm text-gray-500 hover:text-brand-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-gray-300 mb-4">Get in Touch</h4>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="mailto:info@pinalia.com" class="text-sm text-gray-500 hover:text-brand-400 transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                info@pinalia.com
+              </a>
+            </li>
+            <li>
+              <span class="text-sm text-gray-500 flex items-center gap-2">
+                <svg class="w-4 h-4 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                Sepapaja 6, Tallinn, Estonia
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-gray-600">&copy; 2026 Pinalia OÜ. All rights reserved.</p>
+        <p class="text-xs text-gray-600">Registered in Estonia</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      document.getElementById('bar1').style.transform = menuOpen ? 'rotate(45deg) translate(4px, 4px)' : '';
+      document.getElementById('bar2').style.opacity = menuOpen ? '0' : '1';
+      document.getElementById('bar3').style.transform = menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : '';
+    });
+    function closeMobile() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      document.getElementById('bar1').style.transform = '';
+      document.getElementById('bar2').style.opacity = '1';
+      document.getElementById('bar3').style.transform = '';
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
